@@ -1,14 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
+import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 
-export default function ModalScreen() {
+import { RootTabScreenProps } from '../types';
+
+export default function MeditateScreen({ navigation }: RootTabScreenProps<'Meditate'>) {
   return (
     <View style={styles.container}>
-      
+      <Text style={styles.title}>coming in version 0.1</Text>
     </View>
   );
 }
@@ -18,14 +17,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });
