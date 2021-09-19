@@ -8,7 +8,7 @@ export default {
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
-    uiBg: '#b0b0b0'
+    uiBg: '#d4d4d4'
   },
   dark: {
     text: '#fff',

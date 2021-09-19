@@ -15,19 +15,19 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          HabitTracker: {
             screens: {
-              TabOneScreen: 'one',
-            },
+              HabitTrackerScreen: 'tracker',
+            }
           },
-          TabTwo: {
+          Journal: {
             screens: {
-              TabTwoScreen: 'two',
+              JournalScreen: 'journal',
             },
-          },
+          }
         },
       },
-      Modal: 'modal',
+      Modal: 'settings',
       NotFound: '*',
     },
   },

@@ -7,7 +7,7 @@ import { RootTabScreenProps } from '../types';
 export default function MeditateScreen({ navigation }: RootTabScreenProps<'Meditate'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>coming in version 0.1</Text>
+      <Text style={styles.title}>coming in version 1.1</Text>
     </View>
   );
 }

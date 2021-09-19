@@ -19,6 +19,8 @@ import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Audio } from "expo-av";
 
+import useColorScheme from '../hooks/useColorScheme'
+
 import { RootTabScreenProps } from "../types";
 
 export default function TurorialScreen({
@@ -26,14 +28,14 @@ export default function TurorialScreen({
 }: RootTabScreenProps<"tutorial">) {
   const [sound, setSound] = useState();
 
+  const colorScheme = useColorScheme()
+
   const storeData = async (value: string) => {
     try {
       await AsyncStorage.setItem("@use_done", value);
     } catch (e) {
       console.error(e);
     }
-
-    navigation.goBack();
   };
 
   async function doneSound() {
@@ -44,6 +46,8 @@ export default function TurorialScreen({
     setSound(sound);
 
     await sound.playAsync();
+
+    navigation.goBack();
   }
 
   async function redoSound() {
@@ -54,6 +58,8 @@ export default function TurorialScreen({
     setSound(sound);
 
     await sound.playAsync();
+
+    navigation.goBack();
   }
 
   async function closeSound() {
@@ -64,6 +70,8 @@ export default function TurorialScreen({
     setSound(sound);
 
     await sound.playAsync();
+
+    navigation.goBack();
   }
 
   return (
@@ -76,10 +84,15 @@ export default function TurorialScreen({
       >
         <Ionicons name="logo-youtube" size={42} color="#fd4e4e" />
       </TouchableOpacity>
-      <Text style={styles.title}>
-        People of today always eat while watching content. In this video we
-        gonna learn how to eat the right way.
-      </Text>
+      <View style={styles.wrap}>
+        <Text style={styles.title}>
+          Thank you for using HABIT©!                                           We guarantee that the constant use of this app and watching the videos will change your life fundamentally. We are convinced of this because we have used the app advantages ourselves to make progress in our careers. NOT ALL of the available
+          videos, skills and habits are scientifically proven, but are used by several people and will definietly not make things worse! Now, go and watch the tutorial of how to get the most out of this app.
+        </Text>
+        <Text style={styles.credit}>
+          HABIT©
+        </Text>
+      </View>
       <View style={styles.buttons}>
         <View></View>
         <TouchableOpacity
@@ -103,7 +116,7 @@ export default function TurorialScreen({
         <TouchableOpacity
           onPress={() => {
             closeSound();
-            storeData("#222");
+            storeData('#fd4e4e');
           }}
         >
           <MaterialIcons name="close" size={52} color="#fd4e4e" />
@@ -121,14 +134,31 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 14,
+    fontSize: 18.5,
     fontWeight: "bold",
-    marginTop: "2%",
-    maxWidth: "85%",
-    bottom: "34%",
+    padding: 15,
+    position: "absolute",
+  },
+  credit: {
+    fontSize: 25,
+    fontWeight: "bold",
+    position: "absolute",
+    bottom: '5%',
+    right: '31%',
+    padding: 15,
+  },
+  wrap: {
+    borderWidth: 4,
+    top: "25%",
+    position: "absolute",
+    borderRadius: 15,
+    height: '58%',
+    width: "90%",
+    borderColor: "#222",
   },
   button: {
-    bottom: "34%",
+    top: '-3%',
+    position: "absolute",
     width: "90%",
     height: "20%",
     borderRadius: 15,
@@ -143,6 +173,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "90%",
-    top: "40%",
+    position: "absolute",
+    bottom: '7%'
   },
 });
