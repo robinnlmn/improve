@@ -32,6 +32,8 @@ import LinkingConfiguration from './LinkingConfiguration';
 import AwkwardScreen from '../screens/AwkwardScreen';
 import FamilyScreen from '../screens/FamilyScreen';
 import DopamineScreen from '../screens/DopamineScreen';
+import JournalCardScreen from '../screens/JournalCardScreen';
+import JournalCreateScreen from '../screens/JournalCreateScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -57,6 +59,9 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'card' }}>
         <Stack.Screen name="settings" component={ModalScreen} />
         <Stack.Screen name="notifications" component={NotificationScreen} />
+
+        <Stack.Screen name="JournalCardScreen" component={JournalCardScreen} options={{ headerTitle: 'YOUR DAY' }} />
+        <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'create' }} />
 
         <Stack.Screen // @ts-ignore 
           name="how to eat"
@@ -101,7 +106,7 @@ function BottomTabNavigator() {
       // @ts-ignore
       initialRouteName="  "
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: Colors[colorScheme].red,
       }}>
       <BottomTab.Screen
         // @ts-ignore

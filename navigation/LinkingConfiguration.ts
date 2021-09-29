@@ -24,10 +24,14 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               JournalScreen: 'journal',
             },
+          },
+          Skills: {
+            screens: {
+              SkillsScreen: 'skills',
+            },
           }
         },
       },
-      Modal: 'settings',
       NotFound: '*',
     },
   },

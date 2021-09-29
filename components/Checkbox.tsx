@@ -4,6 +4,8 @@ import { StyleSheet, Pressable } from 'react-native';
 import { Text, View } from './Themed';
 import { Audio } from 'expo-av';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
 
 type CheckboxProps = {
   storeId: string
@@ -12,11 +14,16 @@ type CheckboxProps = {
 export default function Checkbox({ storeId }: CheckboxProps) {
   const [sound, setSound] = React.useState()
   const [isSelected, setIsSelected] = useState(false)
-  const [color, setColor] = useState('#fd4e4e') // you are not using this setColor anywhere.
+  const [color] = useState('#fd4e4e')
+
+  const colorScheme = useColorScheme()
 
   const changeSelect = () => {
+    if (!isSelected) {
+      playSound()
+    }
     storeData(!isSelected, storeId);
-    setIsSelected(value => !value) // change value based on the previous value
+    setIsSelected(value => !value)
   }
 
   React.useEffect(() => {
@@ -63,7 +70,7 @@ export default function Checkbox({ storeId }: CheckboxProps) {
     <View>
       <Pressable
         onPress={changeSelect}
-        style={[styles.checkboxBase, { borderColor: color }, isSelected && { backgroundColor: color }]}
+        style={[styles.checkboxBase, { borderColor: color, shadowColor: Colors[colorScheme].shadow }, isSelected && { backgroundColor: color }]}
       >
         {isSelected && <Ionicons name="md-checkmark-sharp" size={40} color="white" style={styles.icon} />}
       </Pressable>
@@ -81,7 +88,13 @@ const styles = StyleSheet.create({
     // borderColor: '#fd4e4e',
     backgroundColor: 'transparent',
     borderRadius: 10,
-    margin: 5
+    margin: 5,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.33,
+    shadowRadius: 2,
   },
   icon: {
     width: 40,

@@ -18,6 +18,9 @@ export type RootStackParamList = {
   settings: undefined;
   notifications: undefined;
   how_to_eat: undefined;
+  JournalCreateScreen: undefined;
+  JournalCardScreen: undefined;
+  JournalCard: undefined;
   NotFound: undefined;
 };
 
@@ -38,6 +41,9 @@ export type RootTabParamList = {
   awkward: undefined;
   family: undefined;
   dopamine: undefined;
+  JournalCard: undefined;
+  JournalCardScreen: undefined;
+  JournalCreateScreen: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

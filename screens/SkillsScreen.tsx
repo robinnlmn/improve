@@ -133,7 +133,7 @@ export default function SkillsScreen({
       <View style={styles.container}>
         {/* USE THIS APP */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: useColor }]}
+          style={[styles.button, { backgroundColor: useColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("tutorial");
@@ -144,7 +144,7 @@ export default function SkillsScreen({
 
         {/* EAT */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: eatColor }]}
+          style={[styles.button, { backgroundColor: eatColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("how to eat");
@@ -155,7 +155,7 @@ export default function SkillsScreen({
 
         {/* EAT */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: bodyColor }]}
+          style={[styles.button, { backgroundColor: bodyColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("aesthetic body");
@@ -166,7 +166,7 @@ export default function SkillsScreen({
 
         {/* FEEL */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: feelColor }]}
+          style={[styles.button, { backgroundColor: feelColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("feeling awkward");
@@ -177,7 +177,7 @@ export default function SkillsScreen({
 
         {/* FAMILY */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: familyColor }]}
+          style={[styles.button, { backgroundColor: familyColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("family");
@@ -188,7 +188,7 @@ export default function SkillsScreen({
 
         {/* DOPAMINE DETOX */}
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: dopamineColor }]}
+          style={[styles.button, { backgroundColor: dopamineColor, shadowColor: Colors[colorScheme].shadow }]}
           onPress={() => {
             // @ts-ignore
             navigation.navigate("dopamine detox");
@@ -221,7 +221,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 15,
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
