@@ -5,26 +5,38 @@ import { View, Text } from '../components/Themed';
 import { AntDesign } from '@expo/vector-icons';
 
 import { RootTabScreenProps } from '../types';
+import useColorScheme from '../hooks/useColorScheme';
+import Colors from '../constants/Colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function JournalScreen({ navigation }: RootTabScreenProps<'Journal'>) {
-  const [journal, setJournal] = React.useState([
-    {
-      date: "29.09.21",
-      value: "Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder ",
-      name: "HARD"
-    },
-    {
-      date: "28.09.21",
-      value: "Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder"
-    },
-    {
-      date: "27.09.21",
-      value: "Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder Today was a nice day this is also a Placeholder"
-    },
-  ])
+  const [journal, setJournal] = React.useState([{}])
+
+  const colorScheme = useColorScheme()
+
+  React.useEffect(() => {
+    async function getData() {
+      try {
+        const data = await AsyncStorage.getItem('@journal')
+        if (data !== null && data !== undefined) {
+          var days = []
+          days.push(journal !== null)
+          days.push(JSON.parse(data))
+
+          console.log(days)
+
+          setJournal(days)
+        }
+      } catch (error) {
+
+      }
+    }
+
+    getData()
+  }, [])
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: Colors[colorScheme].background }}>
       <View style={styles.container}>
         {/* <TouchableOpacity style={styles.button} onPress={() => {
           if (Platform.OS === 'ios') {
@@ -40,11 +52,10 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
         <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={{ marginTop: 40, marginBottom: 40 }} onPress={() => { navigation.navigate('JournalCreateScreen') }} />
 
         {
-          journal.map((journal) => {
-            return (
-              <JournalCard key={journal.date} value={journal} navigation={navigation} />
-            )
-          })
+          journal?.map((journal, index) => (
+            <JournalCard key={index} value={journal} navigation={navigation} />
+          )
+          )
         }
       </View>
     </ScrollView>

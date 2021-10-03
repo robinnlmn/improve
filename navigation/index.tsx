@@ -316,5 +316,5 @@ function TabBarIonicon(props: {
   name: React.ComponentProps<typeof Ionicons>['name'];
   color: string;
 }) {
-  return <Ionicons size={26} style={{ marginBottom: -22 }} {...props} />;
+  return <Ionicons size={26} style={{ marginBottom: -13 }} {...props} />;
 }
