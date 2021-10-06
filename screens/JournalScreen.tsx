@@ -10,7 +10,13 @@ import Colors from '../constants/Colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function JournalScreen({ navigation }: RootTabScreenProps<'Journal'>) {
-  const [journal, setJournal] = React.useState([{}])
+  const [journal, setJournal] = React.useState([
+    {
+      date: "00/00/00",
+      name: "Tutorial",
+      value: "press the + icon on the top to create a new day"
+    }
+  ])
 
   const colorScheme = useColorScheme()
 
@@ -21,18 +27,16 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
         if (data !== null && data !== undefined) {
           var days = []
           days.push(journal !== null)
-          days.push(JSON.parse(data))
+          days.push()
 
-          console.log(days)
-
-          setJournal(days)
+          setJournal(JSON.parse(data))
         }
       } catch (error) {
 
       }
     }
 
-    getData()
+    setInterval(() => { getData() }, 200)
   }, [])
 
   return (

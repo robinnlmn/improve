@@ -1,12 +1,83 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Alert, StyleSheet } from 'react-native';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { Text, View } from '../components/Themed';
 import Checkbox from '../components/Checkbox'
 import { RootTabScreenProps } from '../types';
 import Tooltip from 'rn-tooltip';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'HabitTracker'>) {
+
+    const createThreeButtonAlert = () =>
+        Alert.alert(
+            "HABIT©",
+            "Do you really want to start a new week? All your current data will be deleted",
+            [
+                {
+                    text: "YES",
+                    onPress: () => deleteTracker()
+                },
+                {
+                    text: "NO",
+                    onPress: () => console.log("Ask me later pressed")
+                },
+                {
+                    text: "CANCEL",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+            ],
+            { cancelable: false }
+        );
+
+    async function deleteTracker() {
+        try {
+            await AsyncStorage.setItem('@exercise_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@exercise_7', JSON.stringify(false))
+
+            await AsyncStorage.setItem('@journal_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@journal_7', JSON.stringify(false))
+
+            await AsyncStorage.setItem('@read_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@read_7', JSON.stringify(false))
+
+            await AsyncStorage.setItem('@learn_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@learn_7', JSON.stringify(false))
+
+            await AsyncStorage.setItem('@meditate_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@meditate_7', JSON.stringify(false))
+        } catch (error) {
+            return;
+        }
+    }
+
+
     return (
         <View style={styles.container}>
             <View style={styles.grid}>
@@ -24,6 +95,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         name='body'
                         size={36}
                         color='#fd4e4e'
+                        style={styles.icon}
                         // @ts-ignore 
                         onPress={() => navigation.navigate(' ')}
                     />
@@ -40,6 +112,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         name='md-bookmark'
                         size={36}
                         color='#fd4e4e'
+                        style={styles.icon}
                         // @ts-ignore 
                         onPress={() => navigation.navigate('     ')}
                     />
@@ -52,9 +125,12 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@journal_7" />
                 </View>
                 <View style={styles.row}>
-                    <Tooltip popover={<Text>read</Text>} overlayColor='transparent' backgroundColor='#222' actionType='press' withPointer={true}>
-                        <Ionicons name='journal' size={36} color='#fd4e4e' />
-                    </Tooltip>
+                    <Ionicons
+                        name='journal'
+                        size={36}
+                        color='#fd4e4e'
+                        style={styles.icon}
+                    />
                     <Checkbox storeId="@read_1" />
                     <Checkbox storeId="@read_2" />
                     <Checkbox storeId="@read_3" />
@@ -68,6 +144,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         name='play'
                         size={36}
                         color='#fd4e4e'
+                        style={styles.icon}
                         // @ts-ignore 
                         onPress={() => navigation.navigate('    ')}
                     />
@@ -84,6 +161,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         name='leaf'
                         size={36}
                         color='#fd4e4e'
+                        style={styles.icon}
                         // @ts-ignore 
                         onPress={() => navigation.navigate('   ')}
                     />
@@ -96,7 +174,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@meditate_7" />
                 </View>
             </View>
-            <Text style={styles.title}>HABIT©</Text>
+            <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
         </View>
     );
 }
@@ -108,8 +186,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '900',
         position: 'absolute',
         bottom: '10%'
     },
@@ -136,53 +213,56 @@ const styles = StyleSheet.create({
         backgroundColor: '#222',
         borderRadius: 10,
     },
+    icon: {
+        left: '5%'
+    },
     days1: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
         left: '12%',
-        fontWeight: '800',
+        fontWeight: '900',
     },
     days2: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
-        left: '25.5%',
-        fontWeight: '800',
+        left: '26%',
+        fontWeight: '900',
     },
     days3: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
         left: '38%',
-        fontWeight: '800',
+        fontWeight: '900',
     },
     days4: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
         left: '51.5%',
-        fontWeight: '800',
+        fontWeight: '900',
     },
     days5: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
-        left: '65%',
-        fontWeight: '800',
+        left: '65.5%',
+        fontWeight: '900',
     },
     days6: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
-        left: '78%',
-        fontWeight: '800',
+        left: '77.5%',
+        fontWeight: '900',
     },
     days7: {
         color: '#fd4e4e',
         position: 'absolute',
         bottom: '4%',
-        left: '90.5%',
-        fontWeight: '800',
+        left: '90%',
+        fontWeight: '900',
     },
 });

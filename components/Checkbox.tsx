@@ -27,7 +27,7 @@ export default function Checkbox({ storeId }: CheckboxProps) {
   }
 
   React.useEffect(() => {
-    readData(storeId)
+    setInterval(() => readData(storeId), 200)
   }, []);
 
   const storeData = async (value: any, storeId: string) => {

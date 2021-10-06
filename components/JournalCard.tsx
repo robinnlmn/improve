@@ -18,14 +18,13 @@ export default function JournalCard({ value, navigation }: JournalCardProps) {
     const colorScheme = useColorScheme()
 
     return (
-        <View style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]} >
+        <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value } }) }} style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]}>
             <View style={styles.header}>
                 <Text style={styles.date}>{value.date}</Text>
-                <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value } }) }} style={styles.button}><MaterialIcons name="keyboard-arrow-right" size={44} color="white" /></Pressable>
             </View>
             <Text style={styles.name}>{value.name}</Text>
-            <Text numberOfLines={1} style={styles.value}>{value.value}</Text>
-        </View>
+            <Text numberOfLines={2} style={styles.value}>{value.value}</Text>
+        </Pressable>
     );
 }
 
@@ -34,18 +33,17 @@ const styles = StyleSheet.create({
         width: '90%',
         padding: 10,
         borderRadius: 5,
-        marginTop: 15
-    },
-    date: {
-        fontWeight: 'bold',
-        fontSize: 26,
-        marginBottom: 20,
-        borderBottomWidth: 2
+        marginTop: 10
     },
     name: {
         fontWeight: 'bold',
+        fontSize: 26,
+        marginTop: 0,
+        marginBottom: 5
+    },
+    date: {
+        fontWeight: 'bold',
         fontSize: 18,
-        marginBottom: 20,
         borderBottomWidth: 2
     },
     value: {

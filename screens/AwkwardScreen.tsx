@@ -171,8 +171,18 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
         width: "90%",
+        height: "8%",
         position: "absolute",
-        bottom: '7%'
+        borderRadius: 10,
+        bottom: '7%',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.33,
+        shadowRadius: 4.65,
     },
 });

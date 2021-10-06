@@ -8,27 +8,35 @@ import { RootTabScreenProps } from '../types';
 
 import useColorScheme from '../hooks/useColorScheme'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from '../storage/AsyncStore';
 
 export default function JournalCardScreen({ navigation }: RootTabScreenProps<'JournalCreateScreen'>) {
     const colorScheme = useColorScheme()
-    const [date, setDate] = React.useState("20")
-    const [journal, setJournal] = React.useState("COOLER TAGH")
+    const [date, setDate] = React.useState("")
+    const [journal, setJournal] = React.useState("")
+    const [name, setName] = React.useState("")
+    const [close, setClose] = React.useState(false)
 
-    async function createDay(date: string, journal: string) {
+    async function createDay(date: string, journal: string, name: string) {
         try {
-            const data = await AsyncStorage.getItem('@journal')
-            const parsed = JSON.parse(data!)
+            const response = await Storage.getData('@journal');
 
-            console.log(parsed[0][0][0]['date'])
+            var tempData: any = [];
 
-            // var days = []
+            if (response) {
+                tempData.push({ date: date, value: journal, name: name, _id: response.length + 1 });
+            }
+            else {
+                tempData.push({ date: date, value: journal, name: name, _id: 1 });
+            }
 
-            // days.push(JSON.parse(data!))
+            if (response) tempData.push(...response);
 
-            // console.log(days)
 
-            // const jsonValue = JSON.stringify([{ date: "04.11.21", value: "CAWJFAHWGFIAGW" }])
-            // await AsyncStorage.setItem('@journal', jsonValue)
+            await Storage.setData('@journal', tempData);
+
+            navigation.goBack()
+
         } catch (err) {
             console.error(err)
         }
@@ -36,29 +44,47 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
 
     return (
         <View style={styles.container}>
-            <View style={styles.flex}>
-                <Text style={styles.title}>create a new day!</Text>
-                <MaterialIcons name="keyboard-hide" size={44} color="white" style={{ marginLeft: 30 }} onPress={() => { Keyboard.dismiss() }} />
-            </View>
+            {
+                close ? (
+                    <View style={styles.close}>
+                        <MaterialIcons name="done" size={44} color={Colors[colorScheme].red} style={{ marginLeft: 30 }} onPress={() => {
+                            Keyboard.dismiss()
+                            createDay(date, journal, name)
+                            setClose(false)
+                        }} />
+                    </View>
+                ) : (
+                    <View>
 
-            <Text style={styles.date}>day</Text>
+                    </View>
+                )
+            }
+
+            <TextInput
+                value={name}
+                onChangeText={text => setName(text)}
+                style={[styles.dateInput, { color: Colors[colorScheme].text }]}
+                placeholder="give today a name"
+                onFocus={() => setClose(true)}
+            />
             <TextInput
                 value={date}
                 onChangeText={text => setDate(text)}
                 style={[styles.dateInput, { color: Colors[colorScheme].text }]}
                 placeholder="today's date"
+                onFocus={() => setClose(true)}
             />
             <TextInput
                 value={journal}
                 onChangeText={text => setJournal(text)}
                 style={[styles.dayInput, { color: Colors[colorScheme].text }]}
-                multiline={true}
-                numberOfLines={5}
+                onFocus={() => setClose(true)}
                 placeholder="write about your day..."
+                multiline={true}
             />
 
             <View style={styles.button}>
-                <Button title="CREATE" onPress={() => { createDay(date, journal); }}>
+                <Button title="CREATE" onPress={() => { createDay(date, journal, name); }}>
                 </Button>
             </View>
         </View>
@@ -91,15 +117,23 @@ const styles = StyleSheet.create({
     },
     dateInput: {
         width: '95%',
-        height: '3%',
-        borderBottomWidth: 2,
-        borderBottomColor: 'lightgray',
-        padding: 8
+        height: '6%',
+        padding: 8,
+        marginTop: 20,
+        fontWeight: 'bold',
+        fontSize: 20,
+        borderWidth: 4,
+        borderColor: '#222',
+        borderRadius: 5
     },
     dayInput: {
         width: '95%',
         height: '50%',
         padding: 8,
+        marginTop: 20,
+        borderWidth: 4,
+        borderColor: '#222',
+        borderRadius: 5
     },
     title: {
         fontWeight: 'bold',
@@ -120,4 +154,10 @@ const styles = StyleSheet.create({
     value: {
         maxWidth: '100%',
     },
+    close: {
+        position: 'absolute',
+        bottom: '45%',
+        right: '4%',
+        zIndex: 5
+    }
 });

@@ -20,7 +20,6 @@ import TutorialScreen from '../screens/TutorialScreen';
 import AestheticBodyScreen from '../screens/AestheticBodyScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
 import MeditateScreen from '../screens/MeditateScreen';
 import ExerciseScreen from '../screens/ExerciseScreen';
 import SkillsScreen from '../screens/SkillsScreen';
@@ -61,7 +60,7 @@ function RootNavigator() {
         <Stack.Screen name="notifications" component={NotificationScreen} />
 
         <Stack.Screen name="JournalCardScreen" component={JournalCardScreen} options={{ headerTitle: 'YOUR DAY' }} />
-        <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'create' }} />
+        <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'journal' }} />
 
         <Stack.Screen // @ts-ignore 
           name="how to eat"
