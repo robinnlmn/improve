@@ -20,15 +20,15 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                 },
                 {
                     text: "NO",
-                    onPress: () => console.log("Ask me later pressed")
+                    onPress: () => { }
                 },
                 {
                     text: "CANCEL",
-                    onPress: () => console.log("Cancel Pressed"),
+                    onPress: () => { },
                     style: "cancel"
                 },
             ],
-            { cancelable: false }
+            { cancelable: true }
         );
 
     async function deleteTracker() {
@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
     grid: {
         display: 'flex',
         flexDirection: 'column',
+        transform: [{ scale: 90 / 100 }],
     },
     row: {
         display: 'flex',
