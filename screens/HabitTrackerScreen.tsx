@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     grid: {
         display: 'flex',
         flexDirection: 'column',
-        transform: [{ scale: 90 / 100 }],
+        transform: [{ scale: 95 / 100 }],
     },
     row: {
         display: 'flex',
