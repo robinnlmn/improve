@@ -15,21 +15,31 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          HabitTracker: {
+          Exercise: {
             screens: {
-              HabitTrackerScreen: 'tracker',
-            }
+              ExerciseScreen: 'Exercise',
+            },
           },
           Journal: {
             screens: {
-              JournalScreen: 'journal',
+              JournalScreen: 'Journal',
             },
+          },
+          HabitTracker: {
+            screens: {
+              HabitTracker: 'HabitTracker',
+            }
           },
           Skills: {
             screens: {
-              SkillsScreen: 'skills',
+              SkillsScreen: 'Skills',
             },
-          }
+          },
+          Meditate: {
+            screens: {
+              MeditateScreen: 'Meditate',
+            },
+          },
         },
       },
       NotFound: '*',

@@ -103,13 +103,13 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       // @ts-ignore
-      initialRouteName="  "
+      initialRouteName="HabitTracker"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].red,
+        tabBarShowLabel: false
       }}>
       <BottomTab.Screen
-        // @ts-ignore
-        name=" "
+        name="Exercise"
         component={ExerciseScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Exercise'>) => ({
@@ -146,8 +146,7 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        // @ts-ignore
-        name="     "
+        name="Journal"
         component={JournalScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Journal'>) => ({
@@ -184,8 +183,7 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        // @ts-ignore
-        name="  "
+        name="HabitTracker"
         component={HabitTrackerScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'HabitTracker'>) => ({
@@ -222,8 +220,7 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        // @ts-ignore
-        name="    "
+        name="Skills"
         component={SkillsScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Skills'>) => ({
@@ -260,8 +257,7 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        // @ts-ignore
-        name="   "
+        name="Meditate"
         component={MeditateScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Meditate'>) => ({
@@ -301,9 +297,6 @@ function BottomTabNavigator() {
   );
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
