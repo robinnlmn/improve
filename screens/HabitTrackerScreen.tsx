@@ -11,15 +11,15 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
 
     const createThreeButtonAlert = () =>
         Alert.alert(
-            "HABIT©",
-            "Do you really want to start a new week? All your current data will be deleted",
+            "RESET WEEK?",
+            "Are you sure you want to start a new week? All your current data will be deleted",
             [
                 {
-                    text: "YES",
+                    text: "YES, RESET",
                     onPress: () => deleteTracker()
                 },
                 {
-                    text: "NO",
+                    text: "NO, STAY",
                     onPress: () => { }
                 },
                 {
@@ -97,7 +97,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                         // @ts-ignore 
-                        onPress={() => navigation.navigate(' ')}
+                        onPress={() => navigation.navigate('Exercise')}
                     />
                     <Checkbox storeId="@exercise_1" />
                     <Checkbox storeId="@exercise_2" />
@@ -114,7 +114,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                         // @ts-ignore 
-                        onPress={() => navigation.navigate('     ')}
+                        onPress={() => navigation.navigate('Journal')}
                     />
                     <Checkbox storeId="@journal_1" />
                     <Checkbox storeId="@journal_2" />
@@ -146,7 +146,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                         // @ts-ignore 
-                        onPress={() => navigation.navigate('    ')}
+                        onPress={() => navigation.navigate('Skills')}
                     />
                     <Checkbox storeId="@learn_1" />
                     <Checkbox storeId="@learn_2" />
@@ -163,7 +163,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                         // @ts-ignore 
-                        onPress={() => navigation.navigate('   ')}
+                        onPress={() => navigation.navigate('Meditate')}
                     />
                     <Checkbox storeId="@meditate_1" />
                     <Checkbox storeId="@meditate_2" />

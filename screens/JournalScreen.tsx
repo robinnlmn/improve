@@ -12,8 +12,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function JournalScreen({ navigation }: RootTabScreenProps<'Journal'>) {
   const [journal, setJournal] = React.useState([
     {
-      date: "00/00/00",
-      name: "Tutorial",
+      id: 1,
+      date: "01/01/22",
+      name: "tutorial",
+      value: "press the + icon on the top to create a new day"
+    }
+  ])
+  const [example, setExample] = React.useState([
+    {
+      id: 1,
+      date: "01/01/22",
+      name: "tutorial",
       value: "press the + icon on the top to create a new day"
     }
   ])
@@ -57,9 +66,12 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
 
         {
           journal?.map((journal, index) => (
-            <JournalCard key={index} value={journal} navigation={navigation} />
-          )
-          )
+            journal === null ? (
+              <View></View>
+            ) : (
+              <JournalCard key={index} value={journal} navigation={navigation} index={index} />
+            )
+          ))
         }
       </View>
     </ScrollView>

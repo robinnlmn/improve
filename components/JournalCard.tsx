@@ -11,14 +11,16 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 type JournalCardProps = {
     value: any,
-    navigation: any
+    navigation: any,
+    index: any,
 }
 
-export default function JournalCard({ value, navigation }: JournalCardProps) {
+export default function JournalCard({ value, index, navigation }: JournalCardProps) {
     const colorScheme = useColorScheme()
 
+
     return (
-        <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value } }) }} style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]}>
+        <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value, index } }) }} style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]}>
             <View style={styles.header}>
                 <Text style={styles.date}>{value.date}</Text>
             </View>

@@ -14,6 +14,7 @@ type CountDownTypes = {
 export default function MeditateScreen({ navigation }: RootTabScreenProps<'Meditate'>) {
   const [isPlaying, setIsPlaying] = React.useState(false)
   const [sound, setSound] = React.useState()
+  const [time, setTime] = React.useState(10)
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync(
@@ -38,13 +39,13 @@ export default function MeditateScreen({ navigation }: RootTabScreenProps<'Medit
     <View style={styles.container}>
       <CountdownCircleTimer
         isPlaying={isPlaying}
-        duration={10}
+        duration={time}
         strokeLinecap='round'
         colors={[
           ['#fd4e4e', 1],
         ]}
         onComplete={() => {
-          [true, 3000]
+          [true, 200]
           playSound()
         }}
       >

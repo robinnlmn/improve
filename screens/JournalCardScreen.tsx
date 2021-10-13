@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Alert, Button, StyleSheet } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -15,6 +16,28 @@ export default function JournalCardScreen({ navigation, route }: RootTabScreenPr
 
     const colorScheme = useColorScheme()
 
+    const createThreeButtonAlert = () =>
+        Alert.alert(
+            "DELETE DAY?",
+            "Are you sure you want to delete this day? This action cannot be reverted!",
+            [
+                {
+                    text: "YES, DELETE",
+                    onPress: () => deleteDay()
+                },
+                {
+                    text: "NO, LEAVE",
+                    onPress: () => { }
+                },
+                {
+                    text: "CANCEL",
+                    onPress: () => { },
+                    style: "cancel"
+                },
+            ],
+            { cancelable: true }
+        );
+
     React.useLayoutEffect(() => {
         async function getData() {
             const data: any = await route.params
@@ -22,7 +45,12 @@ export default function JournalCardScreen({ navigation, route }: RootTabScreenPr
             await setData(data['data']['value'])
 
             navigation.setOptions({
-                headerTitle: data['data']['value']['date']
+                headerTitle: data['data']['value']['date'],
+                headerRight: () => (
+                    <Button title="DELETE" color="#fd4e4e" onPress={() => {
+                        createThreeButtonAlert()
+                    }}></Button>
+                )
             })
 
         }
@@ -34,6 +62,23 @@ export default function JournalCardScreen({ navigation, route }: RootTabScreenPr
     React.useEffect(() => {
 
     }, [])
+
+    const deleteDay = async () => {
+        try {
+            const data: any = await route.params
+
+            const alldays = await AsyncStorage.getItem('@journal')
+            const parsedDays = await JSON.parse(alldays!)
+
+            await parsedDays.splice(data['data']['index'], 1)
+
+            await AsyncStorage.setItem('@journal', JSON.stringify(parsedDays))
+            navigation.goBack()
+            console.log(parsedDays)
+        } catch (error) {
+
+        }
+    }
 
     return (
         <View style={styles.container}>

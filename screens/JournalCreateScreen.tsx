@@ -24,10 +24,10 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
             var tempData: any = [];
 
             if (response) {
-                tempData.push({ date: date, value: journal, name: name, _id: response.length + 1 });
+                tempData.push({ date: date, value: journal, name: name, day: response.length + 1 });
             }
             else {
-                tempData.push({ date: date, value: journal, name: name, _id: 1 });
+                tempData.push({ date: date, value: journal, name: name, day: 1 });
             }
 
             if (response) tempData.push(...response);
@@ -63,7 +63,7 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
             <TextInput
                 value={name}
                 onChangeText={text => setName(text)}
-                style={[styles.dateInput, { color: Colors[colorScheme].text }]}
+                style={[styles.nameInput, { color: Colors[colorScheme].text }]}
                 placeholder="give today a name"
                 onFocus={() => setClose(true)}
             />
@@ -82,11 +82,6 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
                 placeholder="write about your day..."
                 multiline={true}
             />
-
-            <View style={styles.button}>
-                <Button title="CREATE" onPress={() => { createDay(date, journal, name); }}>
-                </Button>
-            </View>
         </View>
     );
 }
@@ -115,24 +110,31 @@ const styles = StyleSheet.create({
     data: {
         width: '90%'
     },
+    nameInput: {
+        width: '95%',
+        height: '6%',
+        paddingLeft: 8,
+        marginTop: 5,
+        fontWeight: 'bold',
+        fontSize: 20,
+        borderRadius: 5,
+    },
     dateInput: {
         width: '95%',
         height: '6%',
-        padding: 8,
-        marginTop: 20,
+        paddingLeft: 8,
+        marginTop: 0,
         fontWeight: 'bold',
         fontSize: 20,
-        borderWidth: 4,
-        borderColor: '#222',
-        borderRadius: 5
+        borderRadius: 5,
     },
     dayInput: {
         width: '95%',
-        height: '50%',
+        height: '80%',
         padding: 8,
-        marginTop: 20,
-        borderWidth: 4,
+        borderWidth: 2,
         borderColor: '#222',
+        marginTop: 10,
         borderRadius: 5
     },
     title: {

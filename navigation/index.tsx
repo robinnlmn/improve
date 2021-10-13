@@ -60,7 +60,6 @@ function RootNavigator() {
         <Stack.Screen name="notifications" component={NotificationScreen} />
 
         <Stack.Screen name="JournalCardScreen" component={JournalCardScreen} options={{ headerTitle: 'YOUR DAY' }} />
-        <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'journal' }} />
 
         <Stack.Screen // @ts-ignore 
           name="how to eat"
@@ -86,6 +85,10 @@ function RootNavigator() {
           name="dopamine detox"
           component={DopamineScreen}
         />
+      </Stack.Group>
+
+      <Stack.Group screenOptions={{ presentation: 'fullScreenModal' }}>
+        <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'journal' }} />
       </Stack.Group>
     </Stack.Navigator>
   );
