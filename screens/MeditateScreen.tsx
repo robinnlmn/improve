@@ -37,7 +37,7 @@ export default function MeditateScreen({ navigation }: RootTabScreenProps<'Medit
 
   return (
     <View style={styles.container}>
-      <CountdownCircleTimer
+      {/* <CountdownCircleTimer
         isPlaying={isPlaying}
         duration={time}
         strokeLinecap='round'
@@ -55,7 +55,8 @@ export default function MeditateScreen({ navigation }: RootTabScreenProps<'Medit
           </Animated.Text>
         )}
       </CountdownCircleTimer>
-      <Button title="Start / Stop" onPress={() => setIsPlaying(prev => !prev)} />
+      <Button title="Start / Stop" onPress={() => setIsPlaying(prev => !prev)} /> */}
+      <Text style={styles.title}>coming in version 1.1</Text>
     </View>
   );
 }

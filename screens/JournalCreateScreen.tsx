@@ -24,10 +24,10 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
             var tempData: any = [];
 
             if (response) {
-                tempData.push({ date: date, value: journal, name: name, day: response.length + 1 });
+                tempData.push({ date: date, value: journal, name: name });
             }
             else {
-                tempData.push({ date: date, value: journal, name: name, day: 1 });
+                tempData.push({ date: date, value: journal, name: name });
             }
 
             if (response) tempData.push(...response);

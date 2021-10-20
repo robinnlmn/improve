@@ -1,6 +1,7 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as React from 'react';
-import { Alert, Button, StyleSheet } from 'react-native';
+import { Alert, Button, Pressable, StyleSheet, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -12,27 +13,23 @@ type JournalCardScreenProps = {
 }
 
 export default function JournalCardScreen({ navigation, route }: RootTabScreenProps<'JournalCardScreen'>) {
-    const [data, setData] = React.useState([])
+    const daydata = route.params!['data']['value']
 
     const colorScheme = useColorScheme()
 
     const createThreeButtonAlert = () =>
         Alert.alert(
             "DELETE DAY?",
-            "Are you sure you want to delete this day? This action cannot be reverted!",
+            "",
             [
-                {
-                    text: "YES, DELETE",
-                    onPress: () => deleteDay()
-                },
-                {
-                    text: "NO, LEAVE",
-                    onPress: () => { }
-                },
                 {
                     text: "CANCEL",
                     onPress: () => { },
-                    style: "cancel"
+                },
+                {
+                    text: "DELETE",
+                    onPress: () => deleteDay(),
+                    style: "destructive"
                 },
             ],
             { cancelable: true }
@@ -42,14 +39,20 @@ export default function JournalCardScreen({ navigation, route }: RootTabScreenPr
         async function getData() {
             const data: any = await route.params
 
-            await setData(data['data']['value'])
-
             navigation.setOptions({
                 headerTitle: data['data']['value']['date'],
                 headerRight: () => (
-                    <Button title="DELETE" color="#fd4e4e" onPress={() => {
-                        createThreeButtonAlert()
-                    }}></Button>
+                    <View style={styles.header}>
+                        <Pressable
+                            onPress={() => createThreeButtonAlert()}>
+                            <MaterialIcons
+                                name="delete"
+                                size={28}
+                                color='#fd4e4e'
+                                style={{ marginRight: 0 }}
+                            />
+                        </Pressable>
+                    </View>
                 )
             })
 
@@ -84,10 +87,10 @@ export default function JournalCardScreen({ navigation, route }: RootTabScreenPr
         <View style={styles.container}>
             <View style={styles.data}>
                 {/* @ts-ignore */}
-                <Text style={[styles.name, { color: Colors[colorScheme].red }]}>{data.name}</Text>
+                <Text style={[styles.name, { color: Colors[colorScheme].red }]}>{daydata.name}</Text>
 
                 {/* @ts-ignore */}
-                <Text style={styles.value}>{data.value}</Text>
+                <Text style={styles.value}>{daydata.value}</Text>
             </View>
         </View>
     );
@@ -112,4 +115,28 @@ const styles = StyleSheet.create({
     value: {
         maxWidth: '100%',
     },
+    button: {
+        color: '#fd4e4e'
+    },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: 'transparent'
+    },
+    nameInput: {
+        width: '95%',
+        height: '7.5%',
+        borderWidth: 4,
+        borderColor: '#222',
+        marginTop: 10,
+        borderRadius: 5
+    },
+    dayInput: {
+        width: '95%',
+        height: '85%',
+        borderWidth: 4,
+        borderColor: '#222',
+        marginTop: 10,
+        borderRadius: 5
+    }
 });

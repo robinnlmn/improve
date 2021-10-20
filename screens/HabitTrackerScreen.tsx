@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, StyleSheet } from 'react-native';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Text, View } from '../components/Themed';
 import Checkbox from '../components/Checkbox'
 import { RootTabScreenProps } from '../types';
@@ -15,12 +15,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
             "Are you sure you want to start a new week? All your current data will be deleted",
             [
                 {
-                    text: "YES, RESET",
-                    onPress: () => deleteTracker()
-                },
-                {
-                    text: "NO, STAY",
-                    onPress: () => { }
+                    text: "RESET",
+                    onPress: () => deleteTracker(),
+                    style: "destructive"
                 },
                 {
                     text: "CANCEL",
@@ -174,7 +171,7 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@meditate_7" />
                 </View>
             </View>
-            <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
+            <MaterialIcons name="autorenew" size={44} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
         </View>
     );
 }
