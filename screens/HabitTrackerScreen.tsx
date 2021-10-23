@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, StyleSheet } from 'react-native';
+import { Alert, Image, StyleSheet } from 'react-native';
 import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Text, View } from '../components/Themed';
 import Checkbox from '../components/Checkbox'
@@ -69,6 +69,14 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
             await AsyncStorage.setItem('@meditate_5', JSON.stringify(false))
             await AsyncStorage.setItem('@meditate_6', JSON.stringify(false))
             await AsyncStorage.setItem('@meditate_7', JSON.stringify(false))
+
+            await AsyncStorage.setItem('@adonis_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@adonis_7', JSON.stringify(false))
         } catch (error) {
             return;
         }
@@ -96,13 +104,13 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         // @ts-ignore 
                         onPress={() => navigation.navigate('Exercise')}
                     />
-                    <Checkbox storeId="@exercise_1" />
-                    <Checkbox storeId="@exercise_2" />
-                    <Checkbox storeId="@exercise_3" />
-                    <Checkbox storeId="@exercise_4" />
-                    <Checkbox storeId="@exercise_5" />
-                    <Checkbox storeId="@exercise_6" />
-                    <Checkbox storeId="@exercise_7" />
+                    <Checkbox storeId="@exercise_1" adonis={false} />
+                    <Checkbox storeId="@exercise_2" adonis={false} />
+                    <Checkbox storeId="@exercise_3" adonis={false} />
+                    <Checkbox storeId="@exercise_4" adonis={false} />
+                    <Checkbox storeId="@exercise_5" adonis={false} />
+                    <Checkbox storeId="@exercise_6" adonis={false} />
+                    <Checkbox storeId="@exercise_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -113,13 +121,13 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         // @ts-ignore 
                         onPress={() => navigation.navigate('Journal')}
                     />
-                    <Checkbox storeId="@journal_1" />
-                    <Checkbox storeId="@journal_2" />
-                    <Checkbox storeId="@journal_3" />
-                    <Checkbox storeId="@journal_4" />
-                    <Checkbox storeId="@journal_5" />
-                    <Checkbox storeId="@journal_6" />
-                    <Checkbox storeId="@journal_7" />
+                    <Checkbox storeId="@journal_1" adonis={false} />
+                    <Checkbox storeId="@journal_2" adonis={false} />
+                    <Checkbox storeId="@journal_3" adonis={false} />
+                    <Checkbox storeId="@journal_4" adonis={false} />
+                    <Checkbox storeId="@journal_5" adonis={false} />
+                    <Checkbox storeId="@journal_6" adonis={false} />
+                    <Checkbox storeId="@journal_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -128,13 +136,13 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                     />
-                    <Checkbox storeId="@read_1" />
-                    <Checkbox storeId="@read_2" />
-                    <Checkbox storeId="@read_3" />
-                    <Checkbox storeId="@read_4" />
-                    <Checkbox storeId="@read_5" />
-                    <Checkbox storeId="@read_6" />
-                    <Checkbox storeId="@read_7" />
+                    <Checkbox storeId="@read_1" adonis={false} />
+                    <Checkbox storeId="@read_2" adonis={false} />
+                    <Checkbox storeId="@read_3" adonis={false} />
+                    <Checkbox storeId="@read_4" adonis={false} />
+                    <Checkbox storeId="@read_5" adonis={false} />
+                    <Checkbox storeId="@read_6" adonis={false} />
+                    <Checkbox storeId="@read_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -145,13 +153,13 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         // @ts-ignore 
                         onPress={() => navigation.navigate('Skills')}
                     />
-                    <Checkbox storeId="@learn_1" />
-                    <Checkbox storeId="@learn_2" />
-                    <Checkbox storeId="@learn_3" />
-                    <Checkbox storeId="@learn_4" />
-                    <Checkbox storeId="@learn_5" />
-                    <Checkbox storeId="@learn_6" />
-                    <Checkbox storeId="@learn_7" />
+                    <Checkbox storeId="@learn_1" adonis={false} />
+                    <Checkbox storeId="@learn_2" adonis={false} />
+                    <Checkbox storeId="@learn_3" adonis={false} />
+                    <Checkbox storeId="@learn_4" adonis={false} />
+                    <Checkbox storeId="@learn_5" adonis={false} />
+                    <Checkbox storeId="@learn_6" adonis={false} />
+                    <Checkbox storeId="@learn_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -162,13 +170,23 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         // @ts-ignore 
                         onPress={() => navigation.navigate('Meditate')}
                     />
-                    <Checkbox storeId="@meditate_1" />
-                    <Checkbox storeId="@meditate_2" />
-                    <Checkbox storeId="@meditate_3" />
-                    <Checkbox storeId="@meditate_4" />
-                    <Checkbox storeId="@meditate_5" />
-                    <Checkbox storeId="@meditate_6" />
-                    <Checkbox storeId="@meditate_7" />
+                    <Checkbox storeId="@meditate_1" adonis={false} />
+                    <Checkbox storeId="@meditate_2" adonis={false} />
+                    <Checkbox storeId="@meditate_3" adonis={false} />
+                    <Checkbox storeId="@meditate_4" adonis={false} />
+                    <Checkbox storeId="@meditate_5" adonis={false} />
+                    <Checkbox storeId="@meditate_6" adonis={false} />
+                    <Checkbox storeId="@meditate_7" adonis={false} />
+                </View>
+                <View style={styles.row}>
+                    <Image source={{ uri: "https://cdn.discordapp.com/emojis/812393705742139432.png?size=32" }} style={styles.adonis} />
+                    <Checkbox storeId="@adonis_1" adonis={true} day="1" />
+                    <Checkbox storeId="@adonis_2" adonis={true} day="2" />
+                    <Checkbox storeId="@adonis_3" adonis={true} day="3" />
+                    <Checkbox storeId="@adonis_4" adonis={true} day="4" />
+                    <Checkbox storeId="@adonis_5" adonis={true} day="5" />
+                    <Checkbox storeId="@adonis_6" adonis={true} day="6" />
+                    <Checkbox storeId="@adonis_7" adonis={true} day="7" />
                 </View>
             </View>
             <MaterialIcons name="autorenew" size={44} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
@@ -263,4 +281,8 @@ const styles = StyleSheet.create({
         left: '90%',
         fontWeight: '900',
     },
+    adonis: {
+        width: 36,
+        height: 36,
+    }
 });
