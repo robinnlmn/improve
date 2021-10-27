@@ -9,23 +9,19 @@ import useColorScheme from '../hooks/useColorScheme';
 import { RootTabScreenProps } from '../types';
 import { MaterialIcons } from '@expo/vector-icons';
 
-type JournalCardProps = {
+type ExerciseCardProps = {
     value: any,
     navigation: any,
     index: any,
 }
 
-export default function JournalCard({ value, index, navigation }: JournalCardProps) {
+export default function ExerciseCard({ value, index, navigation }: ExerciseCardProps) {
     const colorScheme = useColorScheme()
 
 
     return (
         <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value, index } }) }} style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]}>
-            <View style={styles.header}>
-                <Text style={styles.date}>{value.date}</Text>
-            </View>
-            <Text style={styles.name}>{value.name}</Text>
-            <Text numberOfLines={2} style={styles.value}>{value.value}</Text>
+            <Text numberOfLines={2} style={styles.value}>{value.text}</Text>
         </Pressable>
     );
 }
@@ -35,13 +31,7 @@ const styles = StyleSheet.create({
         width: '90%',
         padding: 10,
         borderRadius: 5,
-        marginTop: 10,
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.28,
-        shadowRadius: 4.65,
+        marginTop: 10
     },
     name: {
         fontWeight: 'bold',

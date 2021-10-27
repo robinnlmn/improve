@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
+import ExerciseCard from '../components/ExerciseCard';
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -7,12 +8,13 @@ import useColorScheme from '../hooks/useColorScheme';
 import { RootTabScreenProps } from '../types';
 
 export default function ExcerciseScreen({ navigation }: RootTabScreenProps<'Exercise'>) {
+  const [value, setValue] = React.useState([{ text: "" }])
 
   const colorScheme = useColorScheme()
 
   return (
     <View style={[styles.container, { backgroundColor: Colors[colorScheme].background }]}>
-      <Text style={styles.title}>coming in version 1.1</Text>
+      <ExerciseCard value={value} index="1" navigation={navigation} />
     </View>
   );
 }

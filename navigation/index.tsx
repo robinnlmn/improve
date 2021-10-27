@@ -87,7 +87,7 @@ function RootNavigator() {
         />
       </Stack.Group>
 
-      <Stack.Group screenOptions={{ presentation: 'fullScreenModal' }}>
+      <Stack.Group screenOptions={{ presentation: 'card' }}>
         <Stack.Screen name="JournalCreateScreen" component={JournalCreateScreen} options={{ headerTitle: 'journal' }} />
       </Stack.Group>
     </Stack.Navigator>

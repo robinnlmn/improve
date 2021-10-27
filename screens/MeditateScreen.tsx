@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, Button, StyleSheet } from 'react-native';
+import { Animated, Button, Linking, Platform, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
@@ -57,6 +57,11 @@ export default function MeditateScreen({ navigation }: RootTabScreenProps<'Medit
       </CountdownCircleTimer>
       <Button title="Start / Stop" onPress={() => setIsPlaying(prev => !prev)} /> */}
       <Text style={styles.title}>coming in version 1.1</Text>
+      <Button title="Open Medito" onPress={() => {
+        if (Platform.OS === 'ios') {
+          Linking.openURL('https://apps.apple.com/us/app/medito-meditation-wellness/id1500780518')
+        }
+      }}></Button>
     </View>
   );
 }

@@ -21,6 +21,7 @@ export type RootStackParamList = {
   JournalCreateScreen: undefined;
   JournalCardScreen: undefined;
   JournalCard: undefined;
+  ExerciseCard: undefined;
   Journal: undefined;
   NotFound: undefined;
 };

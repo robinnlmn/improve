@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     data: {
         width: '90%',
-        marginTop: 15
+        marginTop: 10
     },
     name: {
         fontWeight: '900',

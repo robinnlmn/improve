@@ -62,7 +62,7 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
           <Text style={styles.title}>OPEN NOTES</Text>
         </TouchableOpacity> */}
 
-        <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={{ marginTop: 40, marginBottom: 40 }} onPress={() => { navigation.navigate('JournalCreateScreen') }} />
+        <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={{ marginTop: 30, marginBottom: 15 }} onPress={() => { navigation.navigate('JournalCreateScreen') }} />
 
         {
           journal?.map((journal, index) => (
