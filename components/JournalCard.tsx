@@ -24,7 +24,7 @@ export default function JournalCard({ value, index, navigation }: JournalCardPro
             <View style={styles.header}>
                 <Text style={styles.date}>{value.date}</Text>
             </View>
-            <Text style={styles.name}>{value.name}</Text>
+            <Text style={[styles.name, { color: Colors[colorScheme].red }]}>{value.name}</Text>
             <Text numberOfLines={2} style={styles.value}>{value.value}</Text>
         </Pressable>
     );
@@ -32,10 +32,10 @@ export default function JournalCard({ value, index, navigation }: JournalCardPro
 
 const styles = StyleSheet.create({
     container: {
-        width: '90%',
-        padding: 10,
+        width: '95%',
         borderRadius: 5,
-        marginTop: 10,
+        padding: 10,
+        marginTop: 7.5,
         shadowOffset: {
             width: 0,
             height: 4,
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     name: {
         fontWeight: 'bold',
         fontSize: 26,
-        marginTop: 0,
-        marginBottom: 5
+        marginTop: -4,
+        marginBottom: -1
     },
     date: {
         fontWeight: 'bold',

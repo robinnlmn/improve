@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, Image, StyleSheet } from 'react-native';
-import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Text, View } from '../components/Themed';
 import Checkbox from '../components/Checkbox'
 import { RootTabScreenProps } from '../types';
@@ -30,53 +30,45 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
 
     async function deleteTracker() {
         try {
-            await AsyncStorage.setItem('@exercise_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@exercise_7', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@1_7', JSON.stringify(false))
 
-            await AsyncStorage.setItem('@journal_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@journal_7', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@2_7', JSON.stringify(false))
 
-            await AsyncStorage.setItem('@read_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@read_7', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@3_7', JSON.stringify(false))
 
-            await AsyncStorage.setItem('@learn_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@learn_7', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@4_7', JSON.stringify(false))
 
-            await AsyncStorage.setItem('@meditate_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@meditate_7', JSON.stringify(false))
-
-            await AsyncStorage.setItem('@adonis_1', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_2', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_3', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_4', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_5', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_6', JSON.stringify(false))
-            await AsyncStorage.setItem('@adonis_7', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_1', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_2', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_3', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_4', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_5', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_6', JSON.stringify(false))
+            await AsyncStorage.setItem('@5_7', JSON.stringify(false))
         } catch (error) {
             return;
         }
@@ -101,16 +93,14 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         size={36}
                         color='#fd4e4e'
                         style={styles.icon}
-                        // @ts-ignore 
-                        onPress={() => navigation.navigate('Exercise')}
                     />
-                    <Checkbox storeId="@exercise_1" adonis={false} />
-                    <Checkbox storeId="@exercise_2" adonis={false} />
-                    <Checkbox storeId="@exercise_3" adonis={false} />
-                    <Checkbox storeId="@exercise_4" adonis={false} />
-                    <Checkbox storeId="@exercise_5" adonis={false} />
-                    <Checkbox storeId="@exercise_6" adonis={false} />
-                    <Checkbox storeId="@exercise_7" adonis={false} />
+                    <Checkbox storeId="@1_1" adonis={false} />
+                    <Checkbox storeId="@1_2" adonis={false} />
+                    <Checkbox storeId="@1_3" adonis={false} />
+                    <Checkbox storeId="@1_4" adonis={false} />
+                    <Checkbox storeId="@1_5" adonis={false} />
+                    <Checkbox storeId="@1_6" adonis={false} />
+                    <Checkbox storeId="@1_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -118,16 +108,14 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         size={36}
                         color='#fd4e4e'
                         style={styles.icon}
-                        // @ts-ignore 
-                        onPress={() => navigation.navigate('Journal')}
                     />
-                    <Checkbox storeId="@journal_1" adonis={false} />
-                    <Checkbox storeId="@journal_2" adonis={false} />
-                    <Checkbox storeId="@journal_3" adonis={false} />
-                    <Checkbox storeId="@journal_4" adonis={false} />
-                    <Checkbox storeId="@journal_5" adonis={false} />
-                    <Checkbox storeId="@journal_6" adonis={false} />
-                    <Checkbox storeId="@journal_7" adonis={false} />
+                    <Checkbox storeId="@2_1" adonis={false} />
+                    <Checkbox storeId="@2_2" adonis={false} />
+                    <Checkbox storeId="@2_3" adonis={false} />
+                    <Checkbox storeId="@2_4" adonis={false} />
+                    <Checkbox storeId="@2_5" adonis={false} />
+                    <Checkbox storeId="@2_6" adonis={false} />
+                    <Checkbox storeId="@2_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -136,13 +124,13 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         color='#fd4e4e'
                         style={styles.icon}
                     />
-                    <Checkbox storeId="@read_1" adonis={false} />
-                    <Checkbox storeId="@read_2" adonis={false} />
-                    <Checkbox storeId="@read_3" adonis={false} />
-                    <Checkbox storeId="@read_4" adonis={false} />
-                    <Checkbox storeId="@read_5" adonis={false} />
-                    <Checkbox storeId="@read_6" adonis={false} />
-                    <Checkbox storeId="@read_7" adonis={false} />
+                    <Checkbox storeId="@3_1" adonis={false} />
+                    <Checkbox storeId="@3_2" adonis={false} />
+                    <Checkbox storeId="@3_3" adonis={false} />
+                    <Checkbox storeId="@3_4" adonis={false} />
+                    <Checkbox storeId="@3_5" adonis={false} />
+                    <Checkbox storeId="@3_6" adonis={false} />
+                    <Checkbox storeId="@3_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -150,16 +138,14 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         size={36}
                         color='#fd4e4e'
                         style={styles.icon}
-                        // @ts-ignore 
-                        onPress={() => navigation.navigate('Skills')}
                     />
-                    <Checkbox storeId="@learn_1" adonis={false} />
-                    <Checkbox storeId="@learn_2" adonis={false} />
-                    <Checkbox storeId="@learn_3" adonis={false} />
-                    <Checkbox storeId="@learn_4" adonis={false} />
-                    <Checkbox storeId="@learn_5" adonis={false} />
-                    <Checkbox storeId="@learn_6" adonis={false} />
-                    <Checkbox storeId="@learn_7" adonis={false} />
+                    <Checkbox storeId="@4_1" adonis={false} />
+                    <Checkbox storeId="@4_2" adonis={false} />
+                    <Checkbox storeId="@4_3" adonis={false} />
+                    <Checkbox storeId="@4_4" adonis={false} />
+                    <Checkbox storeId="@4_5" adonis={false} />
+                    <Checkbox storeId="@4_6" adonis={false} />
+                    <Checkbox storeId="@4_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
                     <Ionicons
@@ -167,29 +153,17 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                         size={36}
                         color='#fd4e4e'
                         style={styles.icon}
-                        // @ts-ignore 
-                        onPress={() => navigation.navigate('Meditate')}
                     />
-                    <Checkbox storeId="@meditate_1" adonis={false} />
-                    <Checkbox storeId="@meditate_2" adonis={false} />
-                    <Checkbox storeId="@meditate_3" adonis={false} />
-                    <Checkbox storeId="@meditate_4" adonis={false} />
-                    <Checkbox storeId="@meditate_5" adonis={false} />
-                    <Checkbox storeId="@meditate_6" adonis={false} />
-                    <Checkbox storeId="@meditate_7" adonis={false} />
-                </View>
-                <View style={styles.row}>
-                    <Image source={{ uri: "https://cdn.discordapp.com/emojis/812393705742139432.png?size=32" }} style={styles.adonis} />
-                    <Checkbox storeId="@adonis_1" adonis={true} day="1" />
-                    <Checkbox storeId="@adonis_2" adonis={true} day="2" />
-                    <Checkbox storeId="@adonis_3" adonis={true} day="3" />
-                    <Checkbox storeId="@adonis_4" adonis={true} day="4" />
-                    <Checkbox storeId="@adonis_5" adonis={true} day="5" />
-                    <Checkbox storeId="@adonis_6" adonis={true} day="6" />
-                    <Checkbox storeId="@adonis_7" adonis={true} day="7" />
+                    <Checkbox storeId="@5_1" adonis={false} />
+                    <Checkbox storeId="@5_2" adonis={false} />
+                    <Checkbox storeId="@5_3" adonis={false} />
+                    <Checkbox storeId="@5_4" adonis={false} />
+                    <Checkbox storeId="@5_5" adonis={false} />
+                    <Checkbox storeId="@5_6" adonis={false} />
+                    <Checkbox storeId="@5_7" adonis={false} />
                 </View>
             </View>
-            <MaterialIcons name="autorenew" size={44} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
+            <FontAwesome5 name="redo" size={40} color="#fd4e4e" style={styles.title} onPress={createThreeButtonAlert} />
         </View>
     );
 }

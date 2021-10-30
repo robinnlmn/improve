@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import JournalCard from '../components/JournalCard';
 import { View, Text } from '../components/Themed';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
 
 import { RootTabScreenProps } from '../types';
 import useColorScheme from '../hooks/useColorScheme';
@@ -62,7 +62,7 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
           <Text style={styles.title}>OPEN NOTES</Text>
         </TouchableOpacity> */}
 
-        <AntDesign name="pluscircle" size={44} color="#fd4e4e" style={{ marginTop: 30, marginBottom: 15 }} onPress={() => { navigation.navigate('JournalCreateScreen') }} />
+        <FontAwesome5 name="pen" size={40} color="#fd4e4e" style={{ marginTop: 25, marginBottom: 15 }} onPress={() => { navigation.navigate('JournalCreateScreen') }} />
 
         {
           journal?.map((journal, index) => (

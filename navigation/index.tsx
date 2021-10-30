@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -33,6 +33,11 @@ import FamilyScreen from '../screens/FamilyScreen';
 import DopamineScreen from '../screens/DopamineScreen';
 import JournalCardScreen from '../screens/JournalCardScreen';
 import JournalCreateScreen from '../screens/JournalCreateScreen';
+import TrackerSettingsScreen from '../screens/TrackerSettingsScreen';
+import JournalSettingsScreen from '../screens/JournalSettingsScreen';
+import FitnessSettingsScreen from '../screens/FitnessSettingsScreen';
+import SkillsSettingsScreen from '../screens/SkillsSettingsScreen';
+import MeditationSettingsScreen from '../screens/MeditationSettingsScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -84,6 +89,26 @@ function RootNavigator() {
         <Stack.Screen // @ts-ignore 
           name="dopamine detox"
           component={DopamineScreen}
+        />
+        <Stack.Screen // @ts-ignore 
+          name="tracker settings"
+          component={TrackerSettingsScreen}
+        />
+        <Stack.Screen // @ts-ignore 
+          name="journal settings"
+          component={JournalSettingsScreen}
+        />
+        <Stack.Screen // @ts-ignore 
+          name="fitness settings"
+          component={FitnessSettingsScreen}
+        />
+        <Stack.Screen // @ts-ignore 
+          name="skills settings"
+          component={SkillsSettingsScreen}
+        />
+        <Stack.Screen // @ts-ignore 
+          name="meditation settings"
+          component={MeditationSettingsScreen}
         />
       </Stack.Group>
 
@@ -265,7 +290,7 @@ function BottomTabNavigator() {
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Meditate'>) => ({
           headerTitle: 'meditation',
-          tabBarIcon: ({ color }) => <TabBarIonicon name="leaf" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarEntypoicon name="leaf" color={color} />,
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.navigate('notifications')}
@@ -312,4 +337,11 @@ function TabBarIonicon(props: {
   color: string;
 }) {
   return <Ionicons size={26} style={{ marginBottom: -13 }} {...props} />;
+}
+
+function TabBarEntypoicon(props: {
+  name: React.ComponentProps<typeof Entypo>['name'];
+  color: string;
+}) {
+  return <Entypo size={26} style={{ marginBottom: -13 }} {...props} />;
 }

@@ -57,11 +57,11 @@ export default function MeditateScreen({ navigation }: RootTabScreenProps<'Medit
       </CountdownCircleTimer>
       <Button title="Start / Stop" onPress={() => setIsPlaying(prev => !prev)} /> */}
       <Text style={styles.title}>coming in version 1.1</Text>
-      <Button title="Open Medito" onPress={() => {
+      {/* <Button title="Open Medito" onPress={() => {
         if (Platform.OS === 'ios') {
           Linking.openURL('https://apps.apple.com/us/app/medito-meditation-wellness/id1500780518')
         }
-      }}></Button>
+      }}></Button> */}
     </View>
   );
 }

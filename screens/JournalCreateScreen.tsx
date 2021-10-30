@@ -63,8 +63,8 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
             <TextInput
                 value={name}
                 onChangeText={text => setName(text)}
-                style={[styles.nameInput, { color: Colors[colorScheme].text }]}
-                placeholder="give today a name"
+                style={[styles.nameInput, { color: Colors[colorScheme].red }]}
+                placeholder="today's name"
                 onFocus={() => setClose(true)}
             />
             <TextInput
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         width: '95%',
         height: '6%',
         paddingLeft: 8,
-        marginTop: 5,
+        marginTop: 0,
         fontWeight: 'bold',
         fontSize: 20,
         borderRadius: 5,
@@ -123,18 +123,18 @@ const styles = StyleSheet.create({
         width: '95%',
         height: '6%',
         paddingLeft: 8,
-        marginTop: 0,
+        marginTop: -15,
         fontWeight: 'bold',
         fontSize: 20,
         borderRadius: 5,
     },
     dayInput: {
         width: '95%',
-        height: '80%',
+        height: '85%',
         padding: 8,
         borderWidth: 2,
         borderColor: '#222',
-        marginTop: 10,
+        marginTop: 0,
         borderRadius: 5
     },
     title: {

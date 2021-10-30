@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Button, Linking, Platform, StyleSheet } from 'react-native';
 import ExerciseCard from '../components/ExerciseCard';
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -14,7 +14,12 @@ export default function ExcerciseScreen({ navigation }: RootTabScreenProps<'Exer
 
   return (
     <View style={[styles.container, { backgroundColor: Colors[colorScheme].background }]}>
-      <ExerciseCard value={value} index="1" navigation={navigation} />
+      <Text style={styles.title}>coming in version 1.1</Text>
+      {/* <Button title="Open Medito" onPress={() => {
+        if (Platform.OS === 'ios') {
+          Linking.openURL('https://apps.apple.com/us/app/medito-meditation-wellness/id1500780518')
+        }
+      }}></Button> */}
     </View>
   );
 }
