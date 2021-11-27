@@ -77,14 +77,14 @@ export default function DopamineScreen({
     return (
         <View style={styles.container}>
             <TouchableOpacity
-                style={styles.button}
+                style={[styles.button, { backgroundColor: Colors[colorScheme].uiBg }]}
                 onPress={() => {
                     Linking.openURL("https://www.youtube.com/watch?v=2cmAaVZGHQA");
                 }}
             >
                 <Ionicons name="logo-youtube" size={42} color="#fd4e4e" />
             </TouchableOpacity>
-            <View style={styles.wrap}>
+            <View style={[styles.wrap, { backgroundColor: Colors[colorScheme].uiBg, borderColor: Colors[colorScheme].uiBg }]}>
                 <Text style={styles.title}>
                     Instant gratification activities ARE RUINING YOUR LIFE! Learn something about dopamine detox (cutting out instant gratification) to get a better understanding of your well-being                                                                                                               - Video by Hamza Ahmed
                 </Text>
@@ -92,7 +92,7 @@ export default function DopamineScreen({
                     HABIT©
                 </Text>
             </View>
-            <View style={styles.buttons}>
+            <View style={[styles.buttons, { shadowColor: Colors[colorScheme].shadow }]}>
                 <View></View>
                 <TouchableOpacity
                     onPress={() => {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     },
     wrap: {
         borderWidth: 4,
-        top: "25%",
+        top: "24%",
         position: "absolute",
         borderRadius: 15,
         height: '58%',
@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#222",
         marginTop: "10%",
     },
     buttons: {
@@ -177,10 +176,9 @@ const styles = StyleSheet.create({
         position: "absolute",
         borderRadius: 10,
         bottom: '7%',
-        shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 4,
+            height: 0,
         },
         shadowOpacity: 0.33,
         shadowRadius: 4.65,

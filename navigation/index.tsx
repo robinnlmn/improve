@@ -19,12 +19,15 @@ import HowToEatScreen from '../screens/HowToEatScreen';
 import TutorialScreen from '../screens/TutorialScreen';
 import AestheticBodyScreen from '../screens/AestheticBodyScreen';
 
-import NotFoundScreen from '../screens/NotFoundScreen';
 import MeditateScreen from '../screens/MeditateScreen';
 import ExerciseScreen from '../screens/ExerciseScreen';
+
+import NotFoundScreen from '../screens/NotFoundScreen';
 import SkillsScreen from '../screens/SkillsScreen';
 import JournalScreen from '../screens/JournalScreen';
 import HabitTrackerScreen from '../screens/HabitTrackerScreen';
+import GoalScreen from '../screens/GoalScreen';
+import VisualizationScreen from '../screens/VisualizationScreen';
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -136,13 +139,50 @@ function BottomTabNavigator() {
         tabBarActiveTintColor: Colors[colorScheme].red,
         tabBarShowLabel: false
       }}>
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Exercise"
         component={ExerciseScreen}
         // @ts-ignore
         options={({ navigation }: RootTabScreenProps<'Exercise'>) => ({
           headerTitle: 'fitness',
           tabBarIcon: ({ color }) => <TabBarIonicon name="body" color={color} />,
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.navigate('notifications')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <MaterialIcons
+                name="notifications"
+                size={30}
+                color={Colors[colorScheme].tabIconDefault}
+                style={{ marginLeft: 15 }}
+              />
+            </Pressable>
+          ),
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate('settings')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <MaterialIcons
+                name="settings"
+                size={30}
+                color={Colors[colorScheme].tabIconDefault}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          )
+        })}
+      /> */}
+      <BottomTab.Screen
+        name="Goals"
+        component={GoalScreen}
+        // @ts-ignore
+        options={({ navigation }: RootTabScreenProps<'Goals'>) => ({
+          headerTitle: 'goals',
+          tabBarIcon: ({ color }) => <TabBarIonicon name="pencil" color={color} />,
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.navigate('notifications')}
@@ -285,6 +325,43 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
+        name="Visualization"
+        component={VisualizationScreen}
+        // @ts-ignore
+        options={({ navigation }: RootTabScreenProps<'Visualization'>) => ({
+          headerTitle: 'visualization',
+          tabBarIcon: ({ color }) => <TabBarIonicon name="calendar-sharp" color={color} />,
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.navigate('notifications')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <MaterialIcons
+                name="notifications"
+                size={30}
+                color={Colors[colorScheme].tabIconDefault}
+                style={{ marginLeft: 15 }}
+              />
+            </Pressable>
+          ),
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate('settings')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <MaterialIcons
+                name="settings"
+                size={30}
+                color={Colors[colorScheme].tabIconDefault}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          )
+        })}
+      />
+      {/* <BottomTab.Screen
         name="Meditate"
         component={MeditateScreen}
         // @ts-ignore
@@ -320,7 +397,7 @@ function BottomTabNavigator() {
             </Pressable>
           )
         })}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }

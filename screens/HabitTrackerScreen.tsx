@@ -9,6 +9,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'HabitTracker'>) {
 
+    const [day1icon, setDay1icon] = React.useState("pen")
+    const [day2icon, setDay2icon] = React.useState("book")
+    const [day3icon, setDay3icon] = React.useState("pray")
+    const [day4icon, setDay4icon] = React.useState("play")
+    const [day5icon, setDay5icon] = React.useState("leaf")
+
     const createThreeButtonAlert = () =>
         Alert.alert(
             "RESET WEEK?",
@@ -74,6 +80,40 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
         }
     }
 
+    React.useEffect(() => {
+        async function getIcons() {
+            try {
+                var icon1 = await AsyncStorage.getItem('@icon_1');
+                var icon2 = await AsyncStorage.getItem('@icon_2');
+                var icon3 = await AsyncStorage.getItem('@icon_3');
+                var icon4 = await AsyncStorage.getItem('@icon_4');
+                var icon5 = await AsyncStorage.getItem('@icon_5');
+
+                if (icon1 !== null) {
+                    setDay1icon(icon1)
+                }
+                if (icon2 !== null) {
+                    setDay2icon(icon2)
+                }
+                if (icon3 !== null) {
+                    setDay3icon(icon3)
+                }
+                if (icon4 !== null) {
+                    setDay4icon(icon4)
+                }
+                if (icon5 !== null) {
+                    setDay5icon(icon5)
+                }
+            } catch (err) {
+
+            }
+        }
+
+        getIcons();
+        setInterval(() => {
+            getIcons();
+        }, 2000);
+    }, [])
 
     return (
         <View style={styles.container}>
@@ -88,9 +128,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Text style={styles.days7}>sun</Text>
                 </View>
                 <View style={styles.row}>
-                    <Ionicons
-                        name='body'
-                        size={36}
+                    <FontAwesome5
+                        name={day1icon}
+                        size={26}
                         color='#fd4e4e'
                         style={styles.icon}
                     />
@@ -103,9 +143,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@1_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
-                    <Ionicons
-                        name='md-bookmark'
-                        size={36}
+                    <FontAwesome5
+                        name={day2icon}
+                        size={26}
                         color='#fd4e4e'
                         style={styles.icon}
                     />
@@ -118,9 +158,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@2_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
-                    <Ionicons
-                        name='journal'
-                        size={36}
+                    <FontAwesome5
+                        name={day3icon}
+                        size={26}
                         color='#fd4e4e'
                         style={styles.icon}
                     />
@@ -133,9 +173,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@3_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
-                    <Ionicons
-                        name='play'
-                        size={36}
+                    <FontAwesome5
+                        name={day4icon}
+                        size={26}
                         color='#fd4e4e'
                         style={styles.icon}
                     />
@@ -148,9 +188,9 @@ export default function HabitTrackerScreen({ navigation }: RootTabScreenProps<'H
                     <Checkbox storeId="@4_7" adonis={false} />
                 </View>
                 <View style={styles.row}>
-                    <Ionicons
-                        name='leaf'
-                        size={36}
+                    <FontAwesome5
+                        name={day5icon}
+                        size={26}
                         color='#fd4e4e'
                         style={styles.icon}
                     />
@@ -204,7 +244,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     icon: {
-        left: '5%'
+        position: 'relative',
+        width: 32,
+        height: 32
     },
     days1: {
         color: '#fd4e4e',

@@ -10,7 +10,8 @@ export default {
     tabIconSelected: tintColorLight,
     uiBg: '#E9E9E9',
     red: "#fd4e4e",
-    shadow: "black"
+    shadow: "black",
+    success: "#fd4e4e"
   },
   dark: {
     text: '#fff',
@@ -21,5 +22,6 @@ export default {
     uiBg: '#222222',
     red: "#fd4e4e",
     shadow: "lightgray",
+    success: "#fd4e4e"
   },
 };

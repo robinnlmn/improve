@@ -23,7 +23,7 @@ export default function JournalScreen({ navigation }: RootTabScreenProps<'Journa
       id: 1,
       date: "01/01/22",
       name: "tutorial",
-      value: "press the + icon on the top to create a new day"
+      value: "press the PEN icon on the top to create a new day"
     }
   ])
 

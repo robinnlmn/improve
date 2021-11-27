@@ -24,6 +24,8 @@ export type RootStackParamList = {
   ExerciseCard: undefined;
   Journal: undefined;
   NotFound: undefined;
+  Goals: undefined;
+  Visualization: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -46,6 +48,8 @@ export type RootTabParamList = {
   JournalCard: undefined;
   JournalCardScreen: undefined;
   JournalCreateScreen: undefined;
+  Goals: undefined;
+  Visualization: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Button, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { Text, View } from '../components/Themed';
@@ -13,6 +13,44 @@ export default function ModalScreen() {
 
   const navigation = useNavigation()
   const colorScheme = useColorScheme()
+
+  const createThreeButtonAlert = () =>
+    Alert.alert(
+      "RESET APP?",
+      "Are you sure you want to reset the whole app?",
+      [
+        {
+          text: "YES",
+          onPress: () => deleteApp(),
+          style: "destructive"
+        },
+        {
+          text: "CANCEL",
+          onPress: () => { },
+          style: "cancel"
+        },
+      ],
+      { cancelable: true }
+    );
+
+  const deleteApp = () =>
+    Alert.alert(
+      "DELETE APP?",
+      "THIS WILL RESET ALL YOUR DATA: JOURNAL, TRACKER AND YOUR SKILLS! THIS CANNOT BE UNDONE!",
+      [
+        {
+          text: "RESET",
+          onPress: () => AsyncStorage.clear(),
+          style: "destructive"
+        },
+        {
+          text: "CANCEL",
+          onPress: () => { },
+          style: "cancel"
+        },
+      ],
+      { cancelable: true }
+    );
 
   return (
     <View style={[styles.container, { backgroundColor: Colors[colorScheme].background, height: '100%' }]}>
@@ -28,7 +66,7 @@ export default function ModalScreen() {
         }}>
         <Text
           style={styles.text}
-        >fitness</Text>
+        >goals</Text>
         <FontAwesome5 name="angle-right" size={32} color={Colors[colorScheme].text} style={{ marginRight: 15 }} />
       </TouchableOpacity>
       <TouchableOpacity
@@ -84,7 +122,21 @@ export default function ModalScreen() {
         }}>
         <Text
           style={styles.text}
-        >meditation</Text>
+        >visualization</Text>
+        <FontAwesome5 name="angle-right" size={32} color={Colors[colorScheme].text} style={{ marginRight: 15 }} />
+      </TouchableOpacity>
+      <Text style={styles.title}>GENERAL</Text>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={[styles.div, { backgroundColor: Colors[colorScheme].uiBg }]}
+        // @ts-ignore
+        onPress={() => {
+          createThreeButtonAlert()
+          console.log('PRESS')
+        }}>
+        <Text
+          style={styles.text}
+        >reset</Text>
         <FontAwesome5 name="angle-right" size={32} color={Colors[colorScheme].text} style={{ marginRight: 15 }} />
       </TouchableOpacity>
     </View>
@@ -94,7 +146,6 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    paddingTop: 20,
   },
   div: {
     display: 'flex',
@@ -112,6 +163,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 10,
+    marginTop: 20,
     marginBottom: 5,
     fontSize: 12
   }

@@ -77,14 +77,14 @@ export default function TurorialScreen({
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={styles.button}
+        style={[styles.button, { backgroundColor: Colors[colorScheme].uiBg }]}
         onPress={() => {
           Linking.openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }}
       >
         <Ionicons name="logo-youtube" size={42} color="#fd4e4e" />
       </TouchableOpacity>
-      <View style={styles.wrap}>
+      <View style={[styles.wrap, { backgroundColor: Colors[colorScheme].uiBg, borderColor: Colors[colorScheme].uiBg }]}>
         <Text style={styles.title}>
           Thank you for using HABIT©!                                           We guarantee that the constant use of this app and watching the videos will change your life fundamentally. We are convinced of this because we have used the app advantages ourselves to make progress in our careers. NOT ALL of the available
           videos, skills and habits are scientifically proven, but are used by several people and will definietly not make things worse! Now, go and watch the tutorial of how to get the most out of this app.
@@ -93,7 +93,7 @@ export default function TurorialScreen({
           HABIT©
         </Text>
       </View>
-      <View style={styles.buttons}>
+      <View style={[styles.buttons, { shadowColor: Colors[colorScheme].shadow }]}>
         <View></View>
         <TouchableOpacity
           onPress={() => {
@@ -149,12 +149,11 @@ const styles = StyleSheet.create({
   },
   wrap: {
     borderWidth: 4,
-    top: "25%",
+    top: "24%",
     position: "absolute",
     borderRadius: 15,
     height: '58%',
     width: "90%",
-    borderColor: "#222",
   },
   button: {
     top: '-3%',
@@ -165,7 +164,6 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#222",
     marginTop: "10%",
   },
   buttons: {
@@ -178,10 +176,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     borderRadius: 10,
     bottom: '7%',
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 0,
     },
     shadowOpacity: 0.33,
     shadowRadius: 4.65,

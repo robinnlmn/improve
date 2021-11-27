@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Keyboard, StyleSheet, TextInput } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -47,7 +47,7 @@ export default function JournalCardScreen({ navigation }: RootTabScreenProps<'Jo
             {
                 close ? (
                     <View style={styles.close}>
-                        <MaterialIcons name="done" size={44} color={Colors[colorScheme].red} style={{ marginLeft: 30 }} onPress={() => {
+                        <FontAwesome5 name="check" size={44} color={Colors[colorScheme].red} style={{ marginLeft: 30 }} onPress={() => {
                             Keyboard.dismiss()
                             createDay(date, journal, name)
                             setClose(false)
@@ -158,8 +158,9 @@ const styles = StyleSheet.create({
     },
     close: {
         position: 'absolute',
-        bottom: '45%',
-        right: '4%',
+        backgroundColor: 'transparent',
+        top: '2%',
+        right: '5%',
         zIndex: 5
     }
 });

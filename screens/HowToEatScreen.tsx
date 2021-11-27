@@ -77,14 +77,14 @@ export default function HowToEatScreen({
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={styles.button}
+        style={[styles.button, { backgroundColor: Colors[colorScheme].uiBg }]}
         onPress={() => {
           Linking.openURL("https://www.youtube.com/watch?v=QznTcTSAA94");
         }}
       >
         <Ionicons name="logo-youtube" size={42} color="#fd4e4e" />
       </TouchableOpacity>
-      <View style={styles.wrap}>
+      <View style={[styles.wrap, { backgroundColor: Colors[colorScheme].uiBg, borderColor: Colors[colorScheme].uiBg }]}>
         <Text style={styles.title}>
           Think about it. How do you eat? While watching Netflix, being on tiktok or getting distracted by other content? The following video will tell you how to eat mindfully. We hope you consider turning this into a habit!                                                                                                              - Video by Hamza Ahmed
         </Text>
@@ -92,7 +92,7 @@ export default function HowToEatScreen({
           HABIT©
         </Text>
       </View>
-      <View style={styles.buttons}>
+      <View style={[styles.buttons, { shadowColor: Colors[colorScheme].shadow }]}>
         <View></View>
         <TouchableOpacity
           onPress={() => {
@@ -148,12 +148,11 @@ const styles = StyleSheet.create({
   },
   wrap: {
     borderWidth: 4,
-    top: "25%",
+    top: "24%",
     position: "absolute",
     borderRadius: 15,
     height: '58%',
     width: "90%",
-    borderColor: "#222",
   },
   button: {
     top: '-3%',
@@ -164,7 +163,6 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#222",
     marginTop: "10%",
   },
   buttons: {
@@ -177,10 +175,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     borderRadius: 10,
     bottom: '7%',
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 0,
     },
     shadowOpacity: 0.33,
     shadowRadius: 4.65,

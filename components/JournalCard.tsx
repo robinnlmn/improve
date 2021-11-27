@@ -22,9 +22,9 @@ export default function JournalCard({ value, index, navigation }: JournalCardPro
     return (
         <Pressable onPress={() => { navigation.navigate('JournalCardScreen', { data: { value, index } }) }} style={[styles.container, { backgroundColor: Colors[colorScheme].uiBg }]}>
             <View style={styles.header}>
-                <Text style={styles.date}>{value.date}</Text>
+                <Text numberOfLines={1} style={styles.date}>{value.date}</Text>
             </View>
-            <Text style={[styles.name, { color: Colors[colorScheme].red }]}>{value.name}</Text>
+            <Text numberOfLines={1} style={[styles.name, { color: Colors[colorScheme].red }]}>{value.name}</Text>
             <Text numberOfLines={2} style={styles.value}>{value.value}</Text>
         </Pressable>
     );
